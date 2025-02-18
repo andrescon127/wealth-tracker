@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealth Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Wealth Tracker</h1>
+        
+        <div class="input-section">
+            <div class="accounts-container">
+                <h2>Accounts</h2>
+                <div id="accounts-list"></div>
+                <button onclick="addAccount()" class="btn">Add Account</button>
+            </div>
+
+            <div class="years-input">
+                <label for="years">Projection Years:</label>
+                <input type="number" id="years" min="1" step="1" value="1">
+            </div>
+
+            <div class="button-group">
+                <button onclick="calculateResults()" class="btn calculate-btn">Calculate</button>
+                <button onclick="resetAll()" class="btn reset-btn">Reset</button>
+            </div>
+        </div>
+
+        <div id="results" class="results-section" style="display: none;">
+            <h2>Results</h2>
+            <div id="results-content"></div>
+        </div>
+    </div>
+
+    <template id="account-template">
+        <div class="account-entry">
+            <input type="text" placeholder="Account Name" class="account-name">
+            <input type="number" placeholder="Balance" step="0.01" min="0" class="account-balance">
+            <input type="number" placeholder="Interest Rate %" step="0.01" min="0" class="account-rate">
+            <button onclick="removeAccount(this)" class="remove-btn">×</button>
+        </div>
+    </template>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
